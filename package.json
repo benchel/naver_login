@@ -1,0 +1,21 @@
+{
+  "name": "naver_login",
+  "version": "1.0.0",
+  "description": "이미 완성된 마크업(HTML)과 스타일(CSS) 위에, **JavaScript 로그인 로직**을 직접 작성하는 과제입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benchel/naver_login.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/benchel/naver_login/issues"
+  },
+  "homepage": "https://github.com/benchel/naver_login#readme"
+}
