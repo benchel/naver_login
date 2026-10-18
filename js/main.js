@@ -28,30 +28,42 @@ const userEmail = document.querySelector("#userEmail");
 const userPassword = document.querySelector("#userPassword");
 const loginButton = document.querySelector(".btn-login");
 
+
+function debounce(f, limit = 1000) {
+  let timeout;
+
+  return function(e) {
+    clearTimeout(timeout);
+    timeout = setTimeout(()=> {
+      f.call(this,e); 
+    }, limit)
+  }
+}
+
 let emailStatus = false;
 
 function emailHandler(e) {
-  let inputVal = e.target.value;
-  e.target.classList.add('is--invalid');
+  let input = e.target;
+  input.classList.add('is--invalid');
 
-  if(emailReg(inputVal)) {
-    e.target.classList.remove('is--invalid');
+  if(emailReg(input.value)) {
+    input.classList.remove('is--invalid');
     emailStatus = true;
     return;
   }
 }
 
-userEmail.addEventListener("input", emailHandler);
+userEmail.addEventListener("input", debounce(emailHandler, 500));
 
 
 let pwdStatus = false;
 
 function pwdHandler(e) {
-  let inputVal = e.target.value;
-  e.target.classList.add('is--invalid');
+  let input = e.target;
+  input.classList.add('is--invalid');
 
-  if(pwReg(inputVal)) {
-    e.target.classList.remove('is--invalid');
+  if(pwReg(input.value)) {
+    input.classList.remove('is--invalid');
     pwdStatus = true;
     return;
   }
@@ -61,6 +73,7 @@ userPassword.addEventListener("input", pwdHandler);
 
 function loginHandler(e) {
   e.preventDefault();
+
   // 유효성 검사 통과 여부 확인
   if(!(emailStatus && pwdStatus)) {
     return;
